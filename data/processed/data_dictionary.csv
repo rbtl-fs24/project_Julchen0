@@ -1,0 +1,15 @@
+variable_dame,description,survey_question
+concern_value,"how concerned the participants are with food waste in general, on a scale from 1-5",How concerned are you about food waste in general?
+knowledge_value,how much the participants know about ETH's food waste reduction strategies,How much do you know about ETHs' food waste reduction strategies?
+mensa_visit_amount,how often the participants eat at a ETH mensa,"How often do you eat at any ETH Mensa (Poly, Archimedes, ...)"
+no_visit_reason,Reason why the participants not eat at a ETH mensa,Why do you not eat at Mensa
+leftovers_amount,how often the participants have leftover food on their plate,How often do you have leftover food on your plate
+largeportion_amount,how often the participants ask for a bigger portion,How often do you ask for a big portion
+foodoptions_amount,how many food options the participants find appropriate,How many food options do you find appropriate for a Mensa
+vegi_option,if there should be a vegetarian menu option,Do you agree with the following statement: There should always be a vegetarian option
+vegan_option,if there should be a vegan option,Do you agree with the following statement: There should always be a vegan option
+paymore_largerportion,if the participants would be willing to pay for a larger sized portion,Would you be willing to pay more for a larger sized portion?
+paymore_largerportion_value,how much more the participants would be willing to pay for a larger sized portion,"If yes, how much more (in CHF)"
+buy_leftovers,if the participants would be willing to buy a menu with leftover food,Would you be willing to eat a menu option out of leftover food from the previous day?
+buy_leftovers_value,how much the participants would be willing to pay for a menu from leftover food,"If yes, how much would you be willing to pay for it (in CHF)?"
+gender,the gender of the participants,Please select your gender

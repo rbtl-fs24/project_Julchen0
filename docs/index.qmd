@@ -1,0 +1,263 @@
+---
+title: "Capstone Project"
+subtitle: "Food Waste at ETH Mensae"
+author:
+  - name: Julia Holenstein
+    orcid: 0000-0003-2196-5015
+    email: jholenstein@ethz.ch
+    affiliation: 
+      - name: ETH Zurich
+        url: https://ethz.ch/de.html
+date: today
+toc: true
+format:
+  html:
+    embed-resources: true
+    toc: true
+execute:
+  warning: false
+editor_options: 
+  chunk_output_type: console
+citation: 
+  container-title: My Blog
+  url: https://www.example.com
+bibliography: references.bib
+editor: visual
+---
+
+```{r}
+#| label: load-packages
+#| echo: false
+
+library(tidyverse)
+library(gt)
+library(gtsummary)
+library(knitr)
+library(DT)
+library(kableExtra)
+library(ggplot2)
+library(ggthemes)
+```
+
+```{r}
+#| label: import-data
+#| echo: false
+
+data_processed <- read_rds("/cloud/project/data/processed/data_processed.rds")
+```
+
+# Introduction
+
+This project investigated the attitudes of students towards food waste reduction strategies at ETH mensae and how these would influence their behaviour. This project is oriented specifically towards ETH mensae, since UZH has a different caterer in their mensae, thus their food waste reduction strategies differ from ETH mensae.
+
+Although it has been shown that most of the food waste in switzerland is generated from private housholds (@beretta2013quantifying), the food waste behaviour of the mensae is still interesting to investigate, since a lot of students eat the food from the mensa instead of preparing it in their private houshold.
+
+There are several strategies in place at ETH which aim to make the catering more sustainable (@projekt). Almost all of them are targeted towards using certified or sustainable products. Food waste is aimed to be reduced to less than 5% of each menu.
+
+# Methods
+
+The research question has been formulated using the PICOT and FINER guidelines (@fandino2019formulating). In order to collect the data, a Google Forms was created and distributed online as well as using a QR-code in order to recieve as many answers as possible. The data was collected during one week, and the participants come from various courses of studies.
+
+# Results
+
+### Food Waste in General
+
+All participants were asked to rate how concerned they are about food waste in general, on a scale from one to five. One means 'not at all concerned' while five means 'extremely concerned'. In @tbl-concerne-mean-gender, we see how concerned the participants are towards food waste in general. Food waste appears to be a relevant topic, independent of the gender.
+
+```{r}
+#| label: tbl-concerne-mean-gender
+#| tbl-cap: "Participants' concern towards food waste in general, on a scale from one to five"
+#| echo: false
+
+
+concern_mean <- data_processed |>
+  filter(!is.na(concern_value)) |>
+  group_by(gender) |>
+  summarise(
+    Mean = round(mean(concern_value, na.rm = TRUE), 2),
+    "Standard Deviation" = round(sd(concern_value, na.rm = TRUE), 2),
+    "Number of Participants" = n()
+  ) |>
+  rename(Gender = gender) |>
+  add_row(Gender = "Total", 
+          Mean = round(mean(data_processed$concern_value, na.rm = TRUE), 2),
+          "Standard Deviation" = round(sd(data_processed$concern_value, na.rm = TRUE), 2),
+          "Number of Participants" = sum(!is.na(data_processed$concern_value)))
+
+
+concern_mean |> 
+  kable() |> 
+  kable_styling(latex_options = c("striped", "scale_down"), full_width = FALSE) |> 
+  row_spec(row = nrow(concern_mean), bold = TRUE, hline_after = 2.5)
+```
+
+If, however, we look at how much the participants of the survey know about the food waste reduction strategies of ETH mensae, as visible in @tbl-knowledge-mean, we notice that there is a lot of room for improvement for ETH to educate about how they try to limit their food waste. Participants were asked to rate their knwoledge on a scale from one to five, one meaning 'I have no idea' and five meaning 'I am an expert'.
+
+```{r}
+#| label: tbl-knowledge-mean
+#| tbl-cap: "Participants' knowledge of ETH food waste reduction strategies, on a scale of one to five"
+#| echo: false
+
+
+knowledge_mean <- data_processed |>
+  filter(!is.na(knowledge_value)) |>
+  summarise(
+    Mean = round(mean(knowledge_value, na.rm = TRUE), 2),
+    "Standard Deviation" = round(sd(knowledge_value, na.rm = TRUE), 2),
+    "Number of Participants" = n()
+  ) 
+
+kable(knowledge_mean)
+```
+
+### Willingness to pay
+
+#### Leftovers-Meal
+
+There are several strategies already in practice about how to limit food waste, although ETH recently changed a lot of their mensa-rules. Contrary to ETH, UZH includes a menu option 'foifer', which consists of leftover food from the day before. It is cheaper than the other meal options, and available as long as there is still food. The price is 5CHF.
+
+Out of all participants, 86% would be willing to purchase such a food option. Out of all these, the expected price range for a leftovers-meal ranges from 4CHF to 7CHF, as we see in @fig-wtp-leftovers. Furthermore, it seems that 5CHF is the most acceptable price option for such a meal.
+
+```{r}
+#| label: fig-wtp-leftovers
+#| fig-cap: "Participants' willingness to pay fo a leftovers-meal"
+#| echo: false
+
+
+data_processed$buy_leftovers_value <- as.factor(data_processed$buy_leftovers_value)  
+
+# Count occurrences 
+count_price_leftover <- data_processed |> 
+  count(buy_leftovers_value)
+
+ggplot(count_price_leftover, aes(x = buy_leftovers_value, y = n)) +
+  geom_col() +
+  scale_x_discrete(limits = levels(data_processed$buy_leftovers_value)) +
+  xlab("Price in CHF") +
+  ylab("Count") +
+  ggtitle("Willingness to pay for a leftovers-meal") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+```
+
+#### Larger Portion
+
+Larger portion sizes are often handeled differently, depending on the mensae. At Polymensa, you could aks for a larger size but you could also get a free refill if you were still hungry after finishing the meal. In my opition, this made sense since in this case, less customers would prejudicely ask for a larger portion but in the end not finish it. If we look at @fig-habits, we see that some participants regularily ask for larger portion sizes, but there is generally hardly any leftover food.
+
+```{r}
+#| label: fig-habits
+#| fig-cap: "Participants' habits at mensa"
+#| echo: false
+
+# Count occurrences
+count_largeportion <- data_processed |>
+  count(largeportion_amount)
+count_leftovers <- data_processed |>
+  count(leftovers_amount)
+
+# Define order on the x-axis
+order_occurence <- c("never", "less than every 10 meals", "once every 3-10 meals", "more often than every 3 meals")
+
+# Create a combined data frame with only the desired values
+habits_data_combined <- data.frame(
+  Variable = rep(c("having leftovers on their plate", "asking for a larger portion"), each = length(order_occurence)),
+  Value = rep(order_occurence, times = 2),
+  Count = c(count_leftovers$n[match(order_occurence, 
+                                    count_leftovers$leftovers_amount)],
+            count_largeportion$n[match(order_occurence,
+                                       count_largeportion$largeportion_amount)])
+  )
+
+
+# Replace NA with 0 for missing values
+habits_data_combined$Count[is.na(habits_data_combined$Count)] <- 0
+
+# Convert Value to factor with desired order
+habits_data_combined$Value <- factor(habits_data_combined$Value, levels = order_occurence)
+
+# Plot the data
+ggplot(habits_data_combined, aes(x = Value, y = Count, fill = Variable)) +
+  geom_col(position = "dodge") +
+  xlab("Occurence") +
+  ylab("Count") +
+  ggtitle("Occurences of specific Situations of mensa costumers") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  guides(fill = guide_legend(title = "Situation"))
+
+
+```
+
+When we look at the willingness to pay for a larger portion though, less than 50% of participants would be willing to pay for a larger sized portion, and they all would pay no more than a 1-2CHF price increase. Thus it makes sence that ETH changed their price policy at the Archimedes mensa, where they used to charge 3CHF for a larger sized portion.
+
+```{r}
+#| label: counting-answers
+#| echo: false
+
+#This code is only to calculate values used in the text, not printed 
+
+pay_for_larger_portion <- sum(data_processed$paymore_largerportion == "Yes", 
+                              na.rm = TRUE)
+# print(pay_for_larger_portion/nrow(data_processed))
+
+```
+
+### Food Options
+
+Lastly, we will take a look at appropriate food options.
+
+Nearly 95% op participants agree that there should always be a vegetarian menu options, while about 66% agree that there should always be a vegan option. Of course it should be considered, that more different food options will lead to more food waste. In @fig-foodoptions, we see that most participants would be happy with three different menu options. Since most ETH mensae have at least four different options, this might be a point to improve.
+
+```{r}
+#| label: counting-answers-foodoptions
+#| echo: false
+
+
+#This code is only to calculate values used in the text, not printed 
+
+vegi_yes <- sum(data_processed$vegi_option == "Yes", 
+                              na.rm = TRUE)
+# print(vegi_yes/nrow(data_processed))
+
+vegan_yes <- sum(data_processed$vegan_option == "Yes",
+                 na.rm = TRUE)
+# print(vegan_yes/nrow(data_processed))
+```
+
+```{r}
+#| label: fig-foodoptions
+#| fig-cap: "Participants' Optinion about amount of menu options"
+#| echo: false
+
+
+data_processed$foodoptions_amount <- as.factor(data_processed$foodoptions_amount)  
+
+# Count occurrences 
+count_foodoptions <- data_processed |> 
+  count(foodoptions_amount)
+
+ggplot(count_foodoptions, aes(x = foodoptions_amount, y = n)) +
+  geom_col() +
+  scale_x_discrete(limits = levels(data_processed$foodoptions_amount)) +
+  xlab("Menu Options") +
+  ylab("Count") +
+  ggtitle("Amount of approptiate menu options") +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+# Conclusions
+
+-   Concern about food waste is high and independent of gender
+
+-   Paricipants have limited knowledge about ETH's food waste reduction strategies
+
+-   Introducing a menu option out of leftovers for CHF5 would be a reasonable option
+
+-   It would be enough if ETH had only three different meals on their menu plan, out of which one is vegan and one is vegetarian
+
+# References

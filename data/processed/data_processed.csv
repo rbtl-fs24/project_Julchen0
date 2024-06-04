@@ -1,0 +1,20 @@
+concern_value,knowledge_value,mensa_visit_amount,no_visit_reason,leftovers_amount,largeportion_amount,foodoptions_amount,vegi_option,vegan_option,paymore_largerportion,paymore_largerportion_value,buy_leftovers,buy_leftovers_value,gender
+4,1,3-4 times a week,NA,never,once every 3-10 meals,4,Yes,I don't care,Yes,1,yes,5,Male
+5,2,3-4 times a week,NA,never,more often than every 3 meals,4,Yes,I don't care,No,NA,yes,5,Male
+4,1,5-7 times a week,NA,never,once every 3-10 meals,3,Yes,Yes,Yes,1,yes,6,Male
+5,1,less than once a month,NA,never,never,5,Yes,Yes,No,NA,no,NA,Female
+5,2,3-4 times a week,NA,never,more often than every 3 meals,3,Yes,Yes,Yes,1,yes,6,Male
+4,1,5-7 times a week,NA,less than every 10 meals,never,5,Yes,Yes,No,NA,yes,5,Female
+4,1,never,I don't like any of the menu options or they don't fit my food preferences,NA,NA,4,Yes,Yes,No,NA,yes,4,Female
+4,1,3-4 times a week,NA,never,less than every 10 meals,3,Yes,No,Yes,2,yes,5,Male
+5,2,1-2 times a week,NA,never,never,2,Yes,Yes,Yes,1,yes,5,Male
+5,2,3-4 times a week,NA,less than every 10 meals,more often than every 3 meals,3,Yes,Yes,No,NA,yes,7,Male
+4,4,3-4 times a week,NA,never,never,3,Yes,Yes,Yes,2,yes,5,Female
+4,1,less than once a month,NA,never,once every 3-10 meals,3,Yes,Yes,No,NA,yes,5,Male
+4,4,1-2 times a week,NA,never,never,3,Yes,Yes,Yes,1,yes,4,Female
+2,3,never,I don't like any of the menu options or they don't fit my food preferences,NA,NA,7,I don't care,I don't care,No,NA,no,NA,Male
+4,1,1-2 times a week,NA,never,once every 3-10 meals,3,Yes,No,Yes,1,yes,3,Male
+5,1,1-2 times a week,NA,never,more often than every 3 meals,3,Yes,No,Yes,1,yes,5,Male
+5,3,never,"too expensive, food in Unimensa is better, bringing my own lunch",NA,NA,3,Yes,Yes,No,NA,yes,5,Male
+5,1,3-4 times a week,NA,never,never,5,Yes,Yes,No,NA,yes,5,Female
+4,2,less than once a month,NA,less than every 10 meals,never,5,Yes,I don't care,No,NA,no,NA,Female

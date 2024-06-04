@@ -2,7 +2,7 @@
 
 ## General information
 
-1.  Title of Dataset:  
+1.  Title of Dataset: survey_data_raw  
 
 2.  Author Information
 
@@ -10,54 +10,53 @@
 
 - First name:Julia  
 - Surname: Holenstein
-- ORCID iD
-- Email:
+- ORCID iD: 0000-0003-2196-5015
+- Email: jholenstein@ethz.ch
 
-**Author B**
 
-- First name:
-- Surname:
-- ORCID iD
-- Email:
-
-etc.
 
 3.  Date of data collection (single date, range, approximate date):
+    21.05.2024 - 28.05.2024 
 
 4.  Geographic location of data collection:
+    ETH Zürich
 
 5.  Information about funding sources that supported the collection of
     the data: 
+    No funding needed
 
 ## Sharing / access information
 
 1.  Licenses/restrictions placed on the data:  
+    This work is licensed under the Holensteins-General 5.0 International license (CC-BY-4.0).
 
-Recommended: This work is licensed under the Creative Commons Attribution 4.0 International license (CC-BY-4.0).
-
-2.  Links to publications that cite or use the data: 
+2.  Links to publications that cite or use the data: -
 
 3.  Links to other publicly accessible locations of the data: -
 
-4.  Links/relationships to ancillary data sets: 
+4.  Links/relationships to ancillary data sets: -
 
 5.  Was data derived from another source? 
+    No
 
 ## Methodological information
 
 1.  Description of methods used for collection/generation of data:
+    A google forms was used to collect data among ETH students, distributed using a QR-Code.
 
 2.  Methods for processing the data:
+    R-coding to process and clean the data
 
 3.  Instrument- or software-specific information needed to interpret the
-    data: 
+    data: -
 
 4.  Standards and calibration information, if appropriate: -
 
-5.  Environmental/experimental conditions: 
+5.  Environmental/experimental conditions: -
 
 6.  Describe any quality-assurance procedures performed on the data: 
+    Only submissions after the surveys' quality check done in the rbtl course were used.
 
 7.  People involved with sample collection, processing, analysis and/or
-    submission:
+    submission: -
 
