@@ -1,6 +1,7 @@
 ---
-title: "Capstone Project"
-subtitle: "Food Waste at ETH Mensae"
+title: "What are the attitudes of ETH students towards food waste reduction strategies such as food donation programs, composting and reducing food purchased, and how do these influence their food waste behaviour?
+"
+subtitle: "A Capstone Project of the Course 'Research beyond the Lab'"
 author:
   - name: Julia Holenstein
     orcid: 0000-0003-2196-5015
@@ -27,7 +28,7 @@ editor: visual
 
 ```{r}
 #| label: load-packages
-#| echo: false
+#| code-fold: true
 
 library(tidyverse)
 library(gt)
@@ -41,22 +42,22 @@ library(ggthemes)
 
 ```{r}
 #| label: import-data
-#| echo: false
+#| code-fold: true
 
 data_processed <- read_rds("/cloud/project/data/processed/data_processed.rds")
 ```
 
 # Introduction
 
-This project investigated the attitudes of students towards food waste reduction strategies at ETH mensae and how these would influence their behaviour. This project is oriented specifically towards ETH mensae, since UZH has a different caterer in their mensae, thus their food waste reduction strategies differ from ETH mensae.
+This project investigated the attitudes of students towards food waste reduction strategies at ETH mensae and how these would influence their behavior. This project is oriented specifically towards ETH mensae, since UZH has a different caterer in their mensae, thus their food waste reduction strategies differ from ETH mensae.
 
-Although it has been shown that most of the food waste in switzerland is generated from private housholds (@beretta2013quantifying), the food waste behaviour of the mensae is still interesting to investigate, since a lot of students eat the food from the mensa instead of preparing it in their private houshold.
+Although it has been shown that most of the food waste in Switzerland is generated from private households (@beretta2013quantifying), the food waste behavior of the mensae is still interesting to investigate, since a lot of students eat the food from the mensa instead of preparing it in their private household.
 
 There are several strategies in place at ETH which aim to make the catering more sustainable (@projekt). Almost all of them are targeted towards using certified or sustainable products. Food waste is aimed to be reduced to less than 5% of each menu.
 
 # Methods
 
-The research question has been formulated using the PICOT and FINER guidelines (@fandino2019formulating). In order to collect the data, a Google Forms was created and distributed online as well as using a QR-code in order to recieve as many answers as possible. The data was collected during one week, and the participants come from various courses of studies.
+The research question has been formulated using the PICOT and FINER guidelines (@fandino2019formulating). In order to collect the data, a Google Forms was created and distributed online as well as using a QR-code in order to receive as many answers as possible. The data was collected during one week, and the participants come from various courses of studies.
 
 # Results
 
@@ -67,7 +68,7 @@ All participants were asked to rate how concerned they are about food waste in g
 ```{r}
 #| label: tbl-concerne-mean-gender
 #| tbl-cap: "Participants' concern towards food waste in general, on a scale from one to five"
-#| echo: false
+#| code-fold: true
 
 
 concern_mean <- data_processed |>
@@ -91,12 +92,12 @@ concern_mean |>
   row_spec(row = nrow(concern_mean), bold = TRUE, hline_after = 2.5)
 ```
 
-If, however, we look at how much the participants of the survey know about the food waste reduction strategies of ETH mensae, as visible in @tbl-knowledge-mean, we notice that there is a lot of room for improvement for ETH to educate about how they try to limit their food waste. Participants were asked to rate their knwoledge on a scale from one to five, one meaning 'I have no idea' and five meaning 'I am an expert'.
+If, however, we look at how much the participants of the survey know about the food waste reduction strategies of ETH mensae, as visible in @tbl-knowledge-mean, we notice that there is a lot of room for improvement for ETH to educate about how they try to limit their food waste. Participants were asked to rate their knowledge on a scale from one to five, one meaning 'I have no idea' and five meaning 'I am an expert'.
 
 ```{r}
 #| label: tbl-knowledge-mean
 #| tbl-cap: "Participants' knowledge of ETH food waste reduction strategies, on a scale of one to five"
-#| echo: false
+#| code-fold: true
 
 
 knowledge_mean <- data_processed |>
@@ -121,7 +122,7 @@ Out of all participants, 86% would be willing to purchase such a food option. Ou
 ```{r}
 #| label: fig-wtp-leftovers
 #| fig-cap: "Participants' willingness to pay fo a leftovers-meal"
-#| echo: false
+#| code-fold: true
 
 
 data_processed$buy_leftovers_value <- as.factor(data_processed$buy_leftovers_value)  
@@ -144,12 +145,12 @@ ggplot(count_price_leftover, aes(x = buy_leftovers_value, y = n)) +
 
 #### Larger Portion
 
-Larger portion sizes are often handeled differently, depending on the mensae. At Polymensa, you could aks for a larger size but you could also get a free refill if you were still hungry after finishing the meal. In my opition, this made sense since in this case, less customers would prejudicely ask for a larger portion but in the end not finish it. If we look at @fig-habits, we see that some participants regularily ask for larger portion sizes, but there is generally hardly any leftover food.
+Larger portion sizes are often handled differently, depending on the mensae. At Polymensa, you could ask for a larger size but you could also get a free refill if you were still hungry after finishing the meal. In my opinion, this made sense since in this case, less customers would prejudiced ask for a larger portion but in the end not finish it. If we look at @fig-habits, we see that some participants regularly ask for larger portion sizes, but there is generally hardly any leftover food.
 
 ```{r}
 #| label: fig-habits
 #| fig-cap: "Participants' habits at mensa"
-#| echo: false
+#| code-fold: true
 
 # Count occurrences
 count_largeportion <- data_processed |>
@@ -191,11 +192,11 @@ ggplot(habits_data_combined, aes(x = Value, y = Count, fill = Variable)) +
 
 ```
 
-When we look at the willingness to pay for a larger portion though, less than 50% of participants would be willing to pay for a larger sized portion, and they all would pay no more than a 1-2CHF price increase. Thus it makes sence that ETH changed their price policy at the Archimedes mensa, where they used to charge 3CHF for a larger sized portion.
+When we look at the willingness to pay for a larger portion though, less than 50% of participants would be willing to pay for a larger sized portion, and they all would pay no more than a 1-2CHF price increase. Thus it makes sense that ETH changed their price policy at the Archimedes mensa, where they used to charge 3CHF for a larger sized portion.
 
 ```{r}
 #| label: counting-answers
-#| echo: false
+#| code-fold: true
 
 #This code is only to calculate values used in the text, not printed 
 
@@ -213,7 +214,7 @@ Nearly 95% op participants agree that there should always be a vegetarian menu o
 
 ```{r}
 #| label: counting-answers-foodoptions
-#| echo: false
+#| code-fold: true
 
 
 #This code is only to calculate values used in the text, not printed 
@@ -230,7 +231,7 @@ vegan_yes <- sum(data_processed$vegan_option == "Yes",
 ```{r}
 #| label: fig-foodoptions
 #| fig-cap: "Participants' Optinion about amount of menu options"
-#| echo: false
+#| code-fold: true
 
 
 data_processed$foodoptions_amount <- as.factor(data_processed$foodoptions_amount)  
@@ -252,9 +253,11 @@ ggplot(count_foodoptions, aes(x = foodoptions_amount, y = n)) +
 
 # Conclusions
 
+In the following bullet points, the main conclusions of this report are summarized:
+
 -   Concern about food waste is high and independent of gender
 
--   Paricipants have limited knowledge about ETH's food waste reduction strategies
+-   Participants have limited knowledge about ET H's food waste reduction strategies
 
 -   Introducing a menu option out of leftovers for CHF5 would be a reasonable option
 

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Julia Holenstein">
-<meta name="dcterms.date" content="2024-06-04">
+<meta name="dcterms.date" content="2024-06-06">
 
-<title>Capstone Project</title>
+<title>What are the attitudes of ETH students towards food waste reduction strategies such as food donation programs, composting and reducing food purchased, and how do these influence their food waste behaviour?</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 
 div.csl-bib-body { }
@@ -3304,8 +3338,8 @@ border: 0;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Capstone Project</h1>
-<p class="subtitle lead">Food Waste at ETH Mensae</p>
+<h1 class="title">What are the attitudes of ETH students towards food waste reduction strategies such as food donation programs, composting and reducing food purchased, and how do these influence their food waste behaviour?</h1>
+<p class="subtitle lead">A Capstone Project of the Course ‘Research beyond the Lab’</p>
 </div>
 
 
@@ -3331,7 +3365,7 @@ border: 0;
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 4, 2024</p>
+      <p class="date">June 6, 2024</p>
     </div>
   </div>
   
@@ -3343,15 +3377,34 @@ border: 0;
 </header>
 
 
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data_processed <span class="ot">&lt;-</span> <span class="fu">read_rds</span>(<span class="st">&quot;/cloud/project/data/processed/data_processed.rds&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>This project investigated the attitudes of students towards food waste reduction strategies at ETH mensae and how these would influence their behaviour. This project is oriented specifically towards ETH mensae, since UZH has a different caterer in their mensae, thus their food waste reduction strategies differ from ETH mensae.</p>
-<p>Although it has been shown that most of the food waste in switzerland is generated from private housholds (<span class="citation" data-cites="beretta2013quantifying">Beretta et al. (<a href="#ref-beretta2013quantifying" role="doc-biblioref">2013</a>)</span>), the food waste behaviour of the mensae is still interesting to investigate, since a lot of students eat the food from the mensa instead of preparing it in their private houshold.</p>
+<p>This project investigated the attitudes of students towards food waste reduction strategies at ETH mensae and how these would influence their behavior. This project is oriented specifically towards ETH mensae, since UZH has a different caterer in their mensae, thus their food waste reduction strategies differ from ETH mensae.</p>
+<p>Although it has been shown that most of the food waste in Switzerland is generated from private households (<span class="citation" data-cites="beretta2013quantifying">Beretta et al. (<a href="#ref-beretta2013quantifying" role="doc-biblioref">2013</a>)</span>), the food waste behavior of the mensae is still interesting to investigate, since a lot of students eat the food from the mensa instead of preparing it in their private household.</p>
 <p>There are several strategies in place at ETH which aim to make the catering more sustainable (<span class="citation" data-cites="projekt"><span>“Projekt Nachhaltige Gastronomie”</span> (<a href="#ref-projekt" role="doc-biblioref">n.d.</a>)</span>). Almost all of them are targeted towards using certified or sustainable products. Food waste is aimed to be reduced to less than 5% of each menu.</p>
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
-<p>The research question has been formulated using the PICOT and FINER guidelines (<span class="citation" data-cites="fandino2019formulating">Fandino (<a href="#ref-fandino2019formulating" role="doc-biblioref">2019</a>)</span>). In order to collect the data, a Google Forms was created and distributed online as well as using a QR-code in order to recieve as many answers as possible. The data was collected during one week, and the participants come from various courses of studies.</p>
+<p>The research question has been formulated using the PICOT and FINER guidelines (<span class="citation" data-cites="fandino2019formulating">Fandino (<a href="#ref-fandino2019formulating" role="doc-biblioref">2019</a>)</span>). In order to collect the data, a Google Forms was created and distributed online as well as using a QR-code in order to receive as many answers as possible. The data was collected during one week, and the participants come from various courses of studies.</p>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
@@ -3359,6 +3412,28 @@ border: 0;
 <h3 class="anchored" data-anchor-id="food-waste-in-general">Food Waste in General</h3>
 <p>All participants were asked to rate how concerned they are about food waste in general, on a scale from one to five. One means ‘not at all concerned’ while five means ‘extremely concerned’. In <a href="#tbl-concerne-mean-gender" class="quarto-xref">Table 1</a>, we see how concerned the participants are towards food waste in general. Food waste appears to be a relevant topic, independent of the gender.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>concern_mean <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(concern_value)) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(concern_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Standard Deviation&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(concern_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Number of Participants&quot;</span> <span class="ot">=</span> <span class="fu">n</span>()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Gender =</span> gender) <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">Gender =</span> <span class="st">&quot;Total&quot;</span>, </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(data_processed<span class="sc">$</span>concern_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Standard Deviation&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(data_processed<span class="sc">$</span>concern_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">&quot;Number of Participants&quot;</span> <span class="ot">=</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(data_processed<span class="sc">$</span>concern_value)))</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>concern_mean <span class="sc">|&gt;</span> </span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>, <span class="st">&quot;scale_down&quot;</span>), <span class="at">full_width =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">row_spec</span>(<span class="at">row =</span> <span class="fu">nrow</span>(concern_mean), <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">hline_after =</span> <span class="fl">2.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div id="tbl-concerne-mean-gender" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-concerne-mean-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3405,8 +3480,20 @@ Table 1: Participants’ concern towards food waste in general, on a scale from
 </figure>
 </div>
 </div>
-<p>If, however, we look at how much the participants of the survey know about the food waste reduction strategies of ETH mensae, as visible in <a href="#tbl-knowledge-mean" class="quarto-xref">Table 2</a>, we notice that there is a lot of room for improvement for ETH to educate about how they try to limit their food waste. Participants were asked to rate their knwoledge on a scale from one to five, one meaning ‘I have no idea’ and five meaning ‘I am an expert’.</p>
+<p>If, however, we look at how much the participants of the survey know about the food waste reduction strategies of ETH mensae, as visible in <a href="#tbl-knowledge-mean" class="quarto-xref">Table 2</a>, we notice that there is a lot of room for improvement for ETH to educate about how they try to limit their food waste. Participants were asked to rate their knowledge on a scale from one to five, one meaning ‘I have no idea’ and five meaning ‘I am an expert’.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>knowledge_mean <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(knowledge_value)) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Mean =</span> <span class="fu">round</span>(<span class="fu">mean</span>(knowledge_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Standard Deviation&quot;</span> <span class="ot">=</span> <span class="fu">round</span>(<span class="fu">sd</span>(knowledge_value, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="dv">2</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Number of Participants&quot;</span> <span class="ot">=</span> <span class="fu">n</span>()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(knowledge_mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div id="tbl-knowledge-mean" class="cell quarto-float anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-knowledge-mean-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -3443,6 +3530,23 @@ Table 2: Participants’ knowledge of ETH food waste reduction strategies, on a
 <p>There are several strategies already in practice about how to limit food waste, although ETH recently changed a lot of their mensa-rules. Contrary to ETH, UZH includes a menu option ‘foifer’, which consists of leftover food from the day before. It is cheaper than the other meal options, and available as long as there is still food. The price is 5CHF.</p>
 <p>Out of all participants, 86% would be willing to purchase such a food option. Out of all these, the expected price range for a leftovers-meal ranges from 4CHF to 7CHF, as we see in <a href="#fig-wtp-leftovers" class="quarto-xref">Figure 1</a>. Furthermore, it seems that 5CHF is the most acceptable price option for such a meal.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_processed<span class="sc">$</span>buy_leftovers_value <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_processed<span class="sc">$</span>buy_leftovers_value)  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>count_price_leftover <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(buy_leftovers_value)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(count_price_leftover, <span class="fu">aes</span>(<span class="at">x =</span> buy_leftovers_value, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">levels</span>(data_processed<span class="sc">$</span>buy_leftovers_value)) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Price in CHF&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Willingness to pay for a leftovers-meal&quot;</span>) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-wtp-leftovers" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -3459,8 +3563,47 @@ Figure 1: Participants’ willingness to pay fo a leftovers-meal
 </section>
 <section id="larger-portion" class="level4">
 <h4 class="anchored" data-anchor-id="larger-portion">Larger Portion</h4>
-<p>Larger portion sizes are often handeled differently, depending on the mensae. At Polymensa, you could aks for a larger size but you could also get a free refill if you were still hungry after finishing the meal. In my opition, this made sense since in this case, less customers would prejudicely ask for a larger portion but in the end not finish it. If we look at <a href="#fig-habits" class="quarto-xref">Figure 2</a>, we see that some participants regularily ask for larger portion sizes, but there is generally hardly any leftover food.</p>
+<p>Larger portion sizes are often handled differently, depending on the mensae. At Polymensa, you could ask for a larger size but you could also get a free refill if you were still hungry after finishing the meal. In my opinion, this made sense since in this case, less customers would prejudiced ask for a larger portion but in the end not finish it. If we look at <a href="#fig-habits" class="quarto-xref">Figure 2</a>, we see that some participants regularly ask for larger portion sizes, but there is generally hardly any leftover food.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>count_largeportion <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(largeportion_amount)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>count_leftovers <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(leftovers_amount)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define order on the x-axis</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>order_occurence <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;never&quot;</span>, <span class="st">&quot;less than every 10 meals&quot;</span>, <span class="st">&quot;once every 3-10 meals&quot;</span>, <span class="st">&quot;more often than every 3 meals&quot;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a combined data frame with only the desired values</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>habits_data_combined <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Variable =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;having leftovers on their plate&quot;</span>, <span class="st">&quot;asking for a larger portion&quot;</span>), <span class="at">each =</span> <span class="fu">length</span>(order_occurence)),</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Value =</span> <span class="fu">rep</span>(order_occurence, <span class="at">times =</span> <span class="dv">2</span>),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Count =</span> <span class="fu">c</span>(count_leftovers<span class="sc">$</span>n[<span class="fu">match</span>(order_occurence, </span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                                    count_leftovers<span class="sc">$</span>leftovers_amount)],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>            count_largeportion<span class="sc">$</span>n[<span class="fu">match</span>(order_occurence,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                                       count_largeportion<span class="sc">$</span>largeportion_amount)])</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace NA with 0 for missing values</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>habits_data_combined<span class="sc">$</span>Count[<span class="fu">is.na</span>(habits_data_combined<span class="sc">$</span>Count)] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Value to factor with desired order</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>habits_data_combined<span class="sc">$</span>Value <span class="ot">&lt;-</span> <span class="fu">factor</span>(habits_data_combined<span class="sc">$</span>Value, <span class="at">levels =</span> order_occurence)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(habits_data_combined, <span class="fu">aes</span>(<span class="at">x =</span> Value, <span class="at">y =</span> Count, <span class="at">fill =</span> Variable)) <span class="sc">+</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Occurence&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Occurences of specific Situations of mensa costumers&quot;</span>) <span class="sc">+</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Situation&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-habits" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -3474,7 +3617,17 @@ Figure 2: Participants’ habits at mensa
 </div>
 </div>
 </div>
-<p>When we look at the willingness to pay for a larger portion though, less than 50% of participants would be willing to pay for a larger sized portion, and they all would pay no more than a 1-2CHF price increase. Thus it makes sence that ETH changed their price policy at the Archimedes mensa, where they used to charge 3CHF for a larger sized portion.</p>
+<p>When we look at the willingness to pay for a larger portion though, less than 50% of participants would be willing to pay for a larger sized portion, and they all would pay no more than a 1-2CHF price increase. Thus it makes sense that ETH changed their price policy at the Archimedes mensa, where they used to charge 3CHF for a larger sized portion.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This code is only to calculate values used in the text, not printed </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>pay_for_larger_portion <span class="ot">&lt;-</span> <span class="fu">sum</span>(data_processed<span class="sc">$</span>paymore_largerportion <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(pay_for_larger_portion/nrow(data_processed))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </section>
 </section>
 <section id="food-options" class="level3">
@@ -3482,6 +3635,37 @@ Figure 2: Participants’ habits at mensa
 <p>Lastly, we will take a look at appropriate food options.</p>
 <p>Nearly 95% op participants agree that there should always be a vegetarian menu options, while about 66% agree that there should always be a vegan option. Of course it should be considered, that more different food options will lead to more food waste. In <a href="#fig-foodoptions" class="quarto-xref">Figure 3</a>, we see that most participants would be happy with three different menu options. Since most ETH mensae have at least four different options, this might be a point to improve.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#This code is only to calculate values used in the text, not printed </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>vegi_yes <span class="ot">&lt;-</span> <span class="fu">sum</span>(data_processed<span class="sc">$</span>vegi_option <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># print(vegi_yes/nrow(data_processed))</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>vegan_yes <span class="ot">&lt;-</span> <span class="fu">sum</span>(data_processed<span class="sc">$</span>vegan_option <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># print(vegan_yes/nrow(data_processed))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_processed<span class="sc">$</span>foodoptions_amount <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(data_processed<span class="sc">$</span>foodoptions_amount)  </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Count occurrences </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>count_foodoptions <span class="ot">&lt;-</span> data_processed <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(foodoptions_amount)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(count_foodoptions, <span class="fu">aes</span>(<span class="at">x =</span> foodoptions_amount, <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">limits =</span> <span class="fu">levels</span>(data_processed<span class="sc">$</span>foodoptions_amount)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Menu Options&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Count&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Amount of approptiate menu options&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div id="fig-foodoptions" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -3499,9 +3683,10 @@ Figure 3: Participants’ Optinion about amount of menu options
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
+<p>In the following bullet points, the main conclusions of this report are summarized:</p>
 <ul>
 <li><p>Concern about food waste is high and independent of gender</p></li>
-<li><p>Paricipants have limited knowledge about ETH’s food waste reduction strategies</p></li>
+<li><p>Participants have limited knowledge about ET H’s food waste reduction strategies</p></li>
 <li><p>Introducing a menu option out of leftovers for CHF5 would be a reasonable option</p></li>
 <li><p>It would be enough if ETH had only three different meals on their menu plan, out of which one is vegan and one is vegetarian</p></li>
 </ul>
@@ -3523,14 +3708,19 @@ Fandino, Wilson. 2019. <span>“Formulating a Good Research Question: <span>Pear
 </div>
 </div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{holenstein2024,
   author = {Holenstein, Julia},
-  title = {Capstone {Project}},
-  date = {2024-06-04},
+  title = {What Are the Attitudes of {ETH} Students Towards Food Waste
+    Reduction Strategies Such as Food Donation Programs, Composting and
+    Reducing Food Purchased, and How Do These Influence Their Food Waste
+    Behaviour?},
+  date = {2024-06-06},
   url = {https://www.example.com},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-holenstein2024" class="csl-entry quarto-appendix-citeas" role="listitem">
-Holenstein, Julia. 2024. <span>“Capstone Project.”</span> My Blog. June
-4, 2024. <a href="https://www.example.com">https://www.example.com</a>.
+Holenstein, Julia. 2024. <span>“What Are the Attitudes of ETH Students
+Towards Food Waste Reduction Strategies Such as Food Donation Programs,
+Composting and Reducing Food Purchased, and How Do These Influence Their
+Food Waste Behaviour? .”</span> My Blog. June 6, 2024. <a href="https://www.example.com">https://www.example.com</a>.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
